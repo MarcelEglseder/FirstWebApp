@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet (urlPatterns = "/login.do")
+@WebServlet (urlPatterns = {"/login.do", "/einloggen"})
 public class LoginServlet extends HttpServlet {
 
     private LoginService loginService = new LoginService();
-    private ToDoService toDoService = new ToDoService();
+
 
 
     @Override
@@ -27,9 +27,9 @@ public class LoginServlet extends HttpServlet {
         String pass = req.getParameter("password");
 
         if (loginService.checkPassword(name, pass)) {
-            req.setAttribute("name", req.getParameter("name"));
-            req.setAttribute("todos", toDoService.retrieveTodos());
-            req.getRequestDispatcher("/WEB-INF/views/welcome.jsp").forward(req,resp);
+            req.getSession().setAttribute("name",name);
+            resp.sendRedirect("/todo.do");
+
         }else{
             req.setAttribute("errorMessage", "Login nicht erfolgreich");
             req.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(req,resp);

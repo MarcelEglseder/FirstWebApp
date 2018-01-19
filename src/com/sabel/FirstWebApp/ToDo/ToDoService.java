@@ -24,4 +24,8 @@ public class ToDoService {
         return todos;
     }
 
+    public void add(ToDo toDo) {
+        todos.add(toDo);
+    }
+
 }
