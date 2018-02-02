@@ -3,6 +3,7 @@ package com.sabel.FirstWebApp.ToDo;
 import com.sabel.FirstWebApp.ToDo.ToDo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ToDoService {
@@ -28,4 +29,20 @@ public class ToDoService {
         todos.add(toDo);
     }
 
+    public void delete(ToDo toDo) {
+        todos.remove(toDo);
+
+
+    }
+
+    public void loesche(String name) {
+        Iterator<ToDo> iterator = todos.iterator();
+        while (iterator.hasNext()) {
+            ToDo toDo = iterator.next();
+            if (toDo.getName().equals(name)) {
+                iterator.remove();
+
+            }
+        }
+    }
 }
