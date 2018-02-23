@@ -8,18 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/delete-todo.do")
-public class DeleteTodoServlet extends HttpServlet {
+
+@WebServlet(urlPatterns = "/todo.do")
+public class ListTodoServlet extends HttpServlet {
 
     @Inject
     private ToDoService toDoService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String todoName = req.getParameter("name");
-        System.out.println(todoName);
-        toDoService.delete(new ToDo(todoName));
-        resp.sendRedirect("/todo.do");
+        req.setAttribute("todos", toDoService.retrieveTodos());
+        req.getRequestDispatcher("/WEB-INF/views/listTodo.jsp").forward(req, resp);
     }
-
 }

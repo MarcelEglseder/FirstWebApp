@@ -5,16 +5,13 @@
   Time: 09:19
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Neuer ToDo</title>
-</head>
-<body>
-<form action="/addTodo.do" method="post">
-    Todo: <input type="text" name="name">
-    <input type="submit" value="Eintragen">
-</form>
+<%@include file="../common/header.jspf"%>
+<%@include file="../common/navigation.jspf"%>
 
-</body>
-</html>
+<div class="container">
+    <form action="/addTodo.do" method="post">
+    Todo: <input type="text" name="name">
+    <input type="submit" value="Eintragen" class="btn btn-success">
+</form>
+</div>
+<%@include file="../common/footer.jspf"%>

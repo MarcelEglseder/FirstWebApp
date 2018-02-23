@@ -2,47 +2,35 @@ package com.sabel.FirstWebApp.ToDo;
 
 import com.sabel.FirstWebApp.ToDo.ToDo;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class ToDoService {
+@ApplicationScoped
+public class ToDoService implements Serializable{
 
-    private static List<ToDo> todos = new ArrayList<>();
+    @Inject
+    private ToDoStore toDoStore;
 
-
-    static {
-        todos.add(new ToDo("Java EE lernen"));
-        todos.add(new ToDo("BA Lernen"));
-        todos.add(new ToDo("Tanzen lernen"));
-    }
-
-    public ToDoService() {
-
-    }
 
     public List<ToDo> retrieveTodos() {
-        return todos;
+       return toDoStore.getToDos();
     }
 
     public void add(ToDo toDo) {
-        todos.add(toDo);
+        toDoStore.store(toDo);
     }
 
     public void delete(ToDo toDo) {
-        todos.remove(toDo);
+       toDoStore.delete(toDo);
 
 
     }
 
-    public void loesche(String name) {
-        Iterator<ToDo> iterator = todos.iterator();
-        while (iterator.hasNext()) {
-            ToDo toDo = iterator.next();
-            if (toDo.getName().equals(name)) {
-                iterator.remove();
 
-            }
-        }
     }
-}
+

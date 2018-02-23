@@ -2,6 +2,7 @@ package com.sabel.FirstWebApp.login;
 
 import com.sabel.FirstWebApp.ToDo.ToDoService;
 
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +13,8 @@ import java.io.IOException;
 @WebServlet (urlPatterns = {"/login.do", "/einloggen"})
 public class LoginServlet extends HttpServlet {
 
-    private LoginService loginService = new LoginService();
+    @Inject
+    private LoginService loginService;
 
 
 
@@ -27,6 +29,7 @@ public class LoginServlet extends HttpServlet {
         String pass = req.getParameter("password");
 
         if (loginService.checkPassword(name, pass)) {
+            req.setAttribute("name", req.getParameter("name"));
             req.getSession().setAttribute("name",name);
             resp.sendRedirect("/todo.do");
 
