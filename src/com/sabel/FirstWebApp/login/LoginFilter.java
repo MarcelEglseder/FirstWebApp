@@ -21,7 +21,7 @@ public class LoginFilter implements Filter {
             filterChain.doFilter(servletRequest, servletResponse);
 
         } else {
-            httpServletRequest.getRequestDispatcher("/login.do").forward(servletRequest, servletResponse);
+            httpServletRequest.getRequestDispatcher("login.do").forward(servletRequest, servletResponse);
 
         }
 

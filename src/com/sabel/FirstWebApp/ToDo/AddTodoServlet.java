@@ -25,6 +25,6 @@ public class AddTodoServlet extends HttpServlet {
         ToDo neuesTodo = new ToDo(todoname);
         toDoService.add(neuesTodo);
         System.out.println(neuesTodo);
-        resp.sendRedirect("/todo.do");
+        resp.sendRedirect("todo.do");
     }
 }

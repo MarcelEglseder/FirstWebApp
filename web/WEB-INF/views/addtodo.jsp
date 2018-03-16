@@ -9,7 +9,7 @@
 <%@include file="../common/navigation.jspf"%>
 
 <div class="container">
-    <form action="/addTodo.do" method="post">
+    <form action="addTodo.do" method="post">
     Todo: <input type="text" name="name">
     <input type="submit" value="Eintragen" class="btn btn-success">
 </form>

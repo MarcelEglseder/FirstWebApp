@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
         if (loginService.checkPassword(name, pass)) {
             req.setAttribute("name", req.getParameter("name"));
             req.getSession().setAttribute("name",name);
-            resp.sendRedirect("/todo.do");
+            resp.sendRedirect("todo.do");
 
         }else{
             req.setAttribute("errorMessage", "Login nicht erfolgreich");
@@ -39,6 +39,7 @@ public class LoginServlet extends HttpServlet {
         }
 
     }
+
 
 
 }

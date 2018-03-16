@@ -19,7 +19,7 @@ public class DeleteTodoServlet extends HttpServlet {
         String todoName = req.getParameter("name");
         System.out.println(todoName);
         toDoService.delete(new ToDo(todoName));
-        resp.sendRedirect("/todo.do");
+        resp.sendRedirect("todo.do");
     }
 
 }
